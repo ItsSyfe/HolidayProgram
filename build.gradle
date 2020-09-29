@@ -1,0 +1,43 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'me.syfe.school.holidayprogram.HolidayProgram'
+
+// tag::repositories[]
+repositories {
+    mavenCentral()
+}
+// end::repositories[]
+
+// tag::jar[]
+jar {
+    archiveBaseName = 'Holiday-Program'
+    archiveVersion =  '0.1.0'
+}
+// end::jar[]
+
+sourceSets {
+    main {
+        resources {
+            srcDir 'src/main/resources'
+            include '*.csv'
+            output.resourcesDir = 'build/resources/main'
+        }
+    }
+}
+
+// tag::dependencies[]
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile "joda-time:joda-time:2.2"
+    compile group: 'com.opencsv', name: 'opencsv', version: '5.2'
+    testCompile "junit:junit:4.12"
+}
+
+
+// end::dependencies[]
+
+// tag::wrapper[]
+// end::wrapper[]
